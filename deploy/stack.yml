@@ -1,0 +1,101 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  BucketName:
+    Type: String
+    Description: Name of the S3 bucket containing the Lambda code
+  LambdaCodeKey:
+    Type: String
+    Description: Key of the Lambda code file in the S3 bucket
+  ApiGatewayName:
+    Type: String
+    Default: dresume-api-gateway
+  ApiGatewayStageName:
+    Type: String
+    Default: call
+  ApiGatewayHTTPMethod:
+    Type: String
+    Default: GET
+  AllowedOrigins:
+    Type: String
+    Description: Allowed origins for resume api
+
+Resources:
+
+  ApiGateway:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      EndpointConfiguration:
+        Types:
+          - REGIONAL
+      Name: !Ref ApiGatewayName
+
+  ApiGatewayRootMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref ApiGateway
+      ResourceId: !GetAtt ApiGateway.RootResourceId
+      HttpMethod: !Ref ApiGatewayHTTPMethod
+      AuthorizationType: NONE
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri: !Sub
+          - arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${LambdaArn}/invocations
+          - LambdaArn: !GetAtt LambdaFunction.Arn
+
+  ApiGatewayDeployment:
+    Type: AWS::ApiGateway::Deployment
+    DependsOn: 
+      - ApiGatewayRootMethod
+    Properties:
+      RestApiId: !Ref ApiGateway
+      StageName: !Ref ApiGatewayStageName
+
+  LambdaFunction:
+      Type: AWS::Lambda::Function
+      Properties:
+        FunctionName: dresume
+        Runtime: nodejs14.x
+        Handler: index.handler
+        Role: !GetAtt LambdaExecutionRole.Arn
+        Code:
+          S3Bucket: !Ref BucketName
+          S3Key: !Ref LambdaCodeKey
+        Environment:
+          Variables:
+            BUCKET: !Ref BucketName
+            ALLOWED_ORIGINS: !Ref AllowedOrigins
+  
+  LambdaApiGatewayInvoke:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !GetAtt LambdaFunction.Arn
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ApiGateway}/${ApiGatewayStageName}/${ApiGatewayHTTPMethod}/
+
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: dresume-lambda-execution-role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Action:
+                  - s3:GetObject
+                  - s3:ListBucket
+                Effect: Allow
+                Resource:
+                  - !Sub arn:aws:s3:::${BucketName}
+                  - !Sub arn:aws:s3:::${BucketName}/*
+          PolicyName: dresume-lambda-policy
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole

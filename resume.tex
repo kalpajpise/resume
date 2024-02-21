@@ -1,0 +1,93 @@
+\documentclass[10pt,a4paper,ragged2e]{classes/altacv}
+\geometry{left=2cm,right=10cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1.25cm,bottom=1.25cm}
+\ifxetexorluatex
+  \setmainfont{Carlito}
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[default]{lato}
+\fi
+
+%% Document Colors
+
+\definecolor{Black}{HTML}{000000}
+\definecolor{Grey}{HTML}{2E2E2E}
+\colorlet{heading}{Black}
+\colorlet{accent}{Black}
+\colorlet{emphasis}{Grey}
+\colorlet{body}{Grey}
+
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+\begin{document}
+
+\name{KALPAJ PISE}
+\tagline{ }
+\personalinfo{
+  \email{\href{mailto:kalpaj12@gmail.com}{kalpaj12@gmail.com}}
+  \phone{++91-8197988998}
+  \location{Bangalore, India}
+  \linkedin{\href{https://linkedin.com/in/kalpajpise}{linkedin.com/in/kalpajpise}}
+  \github{\href{https://github.com/kalpajpise}{github.com/kalpajpise}}
+}
+
+%% Make the header extend all the way to the right.
+\begin{fullwidth}
+\makecvheader
+\end{fullwidth}
+
+\AtBeginEnvironment{itemize}{\small}
+
+%% Load Sidebar with projects.
+%% Experience Section
+
+\cvsection[sidebar]{Experience}
+
+\cvevent{WebKnot Technologies Pvt Ltd}{Tech Lead}{Jan  2022 - Present}{Bangalore}
+\cvevent{}{Senior SDE}{Aug 2021 - Jan 2022}{Bangalore}
+\cvevent{}{SDE Intern}{Dec 2020 - Aug 2021}{Remote}
+\begin{itemize}
+\item Chaired the development of CRM, Logistic, Real-Time Systems, Health Care \& Financial sector overseeing the design and implementation of the server-less, micro-services back-end, service discovery, and micro-service communication protocol.
+\item Lead the development team in the transition of the existing monolithic backend to a modern, event-driven, serverless microservice architecture. Designed and establish the serverless architecture from the ground up.
+\item Implement strategies to reduce AWS billing post-migration to server-less infrastructure by 45\%.
+
+\end{itemize}
+
+\divider
+
+\cvevent{Euphoria Technologies}{Backend Developer \& AI Engineer}{Dec 2020 - April 2021}{Remote}
+\begin{itemize}
+\item Designed and implemented a scalable, event-driven micro-service architecture for analysis the Human Behavior and detect the hazardous event occurring in the real-time video feed.
+\item Oversee the development of the charge distributor and API Gateway, ensuring that they are built to handle high volumes of requests and data.
+\end{itemize}
+
+% Education Section
+
+\cvsection{Education}
+
+\cvevent{RNS INSTITUTE OF TECHNOLOGY}{B.Tech in Information Science \& Engineering}{}{Bangalore,India}
+Graduation Year: 2021\hspace{5mm}\textbf{CG-PA: 8.85/10 }\\
+\smallskip
+Relevant Coursework : Data Structures \& Algorithms, Networking, Computer Architecture, Graph Theory, Discrete Mathematics, Theory of Computation, DBMS, Operating Systems, IoT.
+
+
+%% Technical Skills Section
+
+\cvsection{Technical Skills}
+\smallskip
+\begin{itemize}
+\item \textbf{Programming}: Proficient in Python, Java, C, JavaScript. Experienced with C++, SQL, PHP, Kotlin.
+\smallskip
+\item \textbf{Development}: HTML, Typescript, CSS, SCSS.
+\smallskip
+\item \textbf{DevOps Tools and Utilities}: Git, Docker, AWS, React, Next, Nest, Kafka, Spring Boot, Hibernate, Webpack, Babel, GraphQL, Flask, FastAPI, Django, MongoDB, Postgresql, PyQT, Linux  
+\smallskip
+\end{itemize}
+
+\smallskip
+\begin{footnotesize}
+GitHub \number \month .\number\year
+\end{footnotesize}
+\clearpage
+\end{document}

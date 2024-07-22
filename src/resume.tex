@@ -1,5 +1,5 @@
 \documentclass[10pt,a4paper,ragged2e]{classes/altacv}
-\geometry{left=2cm,right=10cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1.25cm,bottom=1.25cm}
+\geometry{left=1.2cm,right=10cm,marginparwidth=7.8cm,marginparsep=1cm,top=1.25cm,bottom=1.25cm}
 \ifxetexorluatex
   \setmainfont{Carlito}
 \else
@@ -10,7 +10,7 @@
 
 %% Document Colors
 
-\definecolor{Black}{HTML}{000000}
+\definecolor{Black}{HTML}{1D1C1D}
 \definecolor{Grey}{HTML}{2E2E2E}
 \colorlet{heading}{Black}
 \colorlet{accent}{Black}
@@ -23,13 +23,13 @@
 \begin{document}
 
 \name{KALPAJ PISE}
-\tagline{ Technical Lead / Senior Developer }
+\tagline{ }
 \personalinfo{
   \email{\href{mailto:kalpaj12@gmail.com}{kalpaj12@gmail.com}}
   \phone{+91-8197988998}
-  \location{Bangalore, India}
-  \linkedin{\href{https://linkedin.com/in/kalpajpise}{linkedin.com/in/kalpaj-pise}}
-  \github{\href{https://github.com/kalpajpise}{github.com/kalpajpise}}
+  \location{Bengaluru, India}
+  \linkedin{\href{https://linkedin.com/in/kalpaj-pise/}{kalpaj-pise}}
+  \github{\href{https://github.com/kalpajpise}{kalpajpise}}
 }
 
 %% Make the header extend all the way to the right.
@@ -44,59 +44,71 @@
 
 \cvsection[sidebar]{Experience}
 
-\cvevent{WebKnot Technologies Pvt Ltd}{Technical Lead}{Jan  2022 - Present}{Bangalore}
+\cvCompany{Webknot Technologies}{Technical Lead}{07/2021 - Present\hfill Bengaluru}
 
-\begin{itemize}
-    \item Designed and implemented an event-driven microservice architecture using Kafka and Kubernetes, reducing service downtime by 40\% and enhancing reliability with real-time error handling Led CRM, logistics, and real-time system development, integrating microservices, and improving data processing, boosting team productivity by 30\%.
+\cvevent{}{HDFC Bank \textnormal{-- Contract}}{\textit{09/2022 - Present\hfill Bengaluru}}
+
+\begin{itemize}[itemsep=5pt]
+\normalsize
+
+\item Designing distributed flows to achieve \textbf{sub-3 second} update time for modifying millions of billers using \textbf{GCS gRPC channels}, \textbf{Pub/Sub}, \textbf{Aerospike} and \textbf{Postgres Copy}.
+
+\item Developed a full-text search engine on top of Postgres full-text, serving \textbf{120 million} users. Added a custom C extension to generate the search vectors.
+
+\item Written \textbf{REST/gRPC} API's and \textbf{Scalable Micro Services} in \textbf{Spring Boot} and working with cross functional teams including Admin, UPI and NetBanking.
+
 \end{itemize}
 
-\cvevent{}{Senior SDE}{Aug 2021 - Jan 2022}{Bangalore}
-\begin{itemize}
-    \item Conceptualized and established a modern serverless architecture from scratch, which improved response times by 60\%.Led efforts to optimize backend performance, increasing overall system throughput by 25\%.
+\vspace{3pt}
+
+\cvevent{}{Aditya Birla Group - GDNA \textnormal{-- Contract}}{\textit{08/2021 - 06/2023\hfill Bengaluru}}
+\begin{itemize}[itemsep=5pt]
+\normalsize
+
+\item Designed a distributed system to achieve \textbf{100fps} flame monitoring using \textbf{RabbitMQ}, \textbf{FFMPEG}, \textbf{Promethus exporter} and \textbf{time series DB} reducing process exceptions by \textbf{30\%}, and providing detailed analytics and alerts.
+
+
+\item Achieved annual savings of approximately \textbf{\$2 million}, significantly enhancing operational efficiency and reducing costs.
+
+\item Enhanced the system's performance from handling \textbf{4 concurrent users with a 40\% error rate} to managing \textbf{150 concurrent users with a 0\% error rate.}
+
 \end{itemize}
 
-\cvevent{}{SDE Intern}{Dec 2020 - Aug 2021}{Remote}
-\begin{itemize}
-\item Contributed to the development of scalable, event-driven architectures for various projects, reducing data processing times by 30\%. Assisted in the integration of microservices and API gateways, ensuring the system handled high data volumes effectively.
+
+
+\vspace{3pt}
+
+\cvevent{}{Euphoric Thought Technologies \textnormal{-- Contract}}{\textit{05/2021 - 07/2021\hfill Bengaluru}}
+\begin{itemize}[itemsep=5pt]
+\normalsize
+
+\item Designed a distributed system to achieve \textbf{100fps} flame monitoring using \textbf{RabbitMQ}, \textbf{FFMPEG}, \textbf{Promethus exporter} and \textbf{time series DB} reducing process exceptions by \textbf{30\%}, and providing detailed analytics and alerts.
+
 \end{itemize}
+
+
 
 \divider
+\cvCompany{Internships}{}{}
 
-\cvevent{Euphoria Technologies}{Backend Developer \& AI Engineer}{Dec 2020 - April 2021}{Remote}
-\begin{itemize}
-\item Developed a scalable microservice architecture for real-time human behavior analysis, improving event detection accuracy by 20%.
+\cvevent{}{Webknot Technologies \textnormal{-- SDE Intern}}{\textit{02/2021 - 06/2021\hfill Remote}}
+\begin{itemize}[itemsep=6pt]
+\normalsize
+
+\item Spearheaded the development of Paws CRM, directing the design and implementation of its \textbf{serverless} backend using \textbf{AWS Lambda}.
+
 \end{itemize}
-
-% Education Section
-
-\cvsection{Education}
-
-\cvevent{RNS INSTITUTE OF TECHNOLOGY}{B.Tech in Information Science \& Engineering}{}{Bangalore,India}
-Graduation Year: 2021\hspace{5mm}\textbf{CG-PA: 8.85/10 }\\
-\smallskip
-Relevant Coursework : Data Structures \& Algorithms, Networking, Computer Architecture, Graph Theory, Discrete Mathematics, Theory of Computation, DBMS, Operating Systems, IoT.
-
-
-%% Technical Skills Section
-
-\cvsection{Technical Skills}
-\smallskip
-\begin{itemize}
-\item \textbf{Programming Languages}: Python, Java, Golang, C, JavaScript, C++, SQL, PHP, Kotlin
-\smallskip
-\item \textbf{Web Development}: HTML, Typescript, CSS, SCSS.
-\smallskip
-\item \textbf{DevOps Tools}: gRPC, Kubernetes, Docker, AWS, GCP, Linux, Git, ProtoBuf, Webhook
-\smallskip
-\item \textbf{Frameworks and Libraries}: React, Next, Nest, Kafka, Spring Boot, Hibernate, Flask, FastAPI, Django, 
-\smallskip
-\item \textbf{Databases}:MongoDB, PostgreSQL, SQL, Influx, Time Series,  
-\smallskip
+\vspace{3pt}
+\cvevent{}{Sahu Technologies \textnormal{-- Backend Intern}}{\textit{01/2021 - 4/2021\hfill Remote}}
+\begin{itemize}[itemsep=6pt]
+\normalsize
+\item Migrated PHP/MySQL configuration to \textbf{Next.JS with MongoDB}. Transitioned to \textbf{AWS} instance of \textbf{RHEL} with
+Amplify, resulting in a \textbf{37\%} cost reduction.
 \end{itemize}
 
 \smallskip
 \begin{footnotesize}
-GitHub \number \month .\number\year.__VERSION__
+GitHub \number \month .\number\year.version
 \end{footnotesize}
 \clearpage
 \end{document}
